@@ -1742,6 +1742,7 @@ enum LiquidityPoolDepositResultCode
                                                 // have sufficient limit
     LIQUIDITY_POOL_DEPOSIT_BAD_PRICE = -6,      // deposit price outside bounds
     LIQUIDITY_POOL_DEPOSIT_POOL_FULL = -7       // pool reserves are full
+    LIQUIDITY_POOL_DEPOSIT_INVALID_DIST_ACCOUNT = -8   // invalid disributor account
 };
 
 union LiquidityPoolDepositResult switch (LiquidityPoolDepositResultCode code)
@@ -1755,6 +1756,7 @@ case LIQUIDITY_POOL_DEPOSIT_UNDERFUNDED:
 case LIQUIDITY_POOL_DEPOSIT_LINE_FULL:
 case LIQUIDITY_POOL_DEPOSIT_BAD_PRICE:
 case LIQUIDITY_POOL_DEPOSIT_POOL_FULL:
+case LIQUIDITY_POOL_DEPOSIT_INVALID_DIST_ACCOUNT:
     void;
 };
 
