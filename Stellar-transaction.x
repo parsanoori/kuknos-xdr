@@ -1374,12 +1374,11 @@ enum ChangeTrustResultCode
                                      // cannot create with a limit of 0
     CHANGE_TRUST_LOW_RESERVE =
         -4, // not enough funds to create a new trust line,
-    CHANGE_TRUST_SELF_NOT_ALLOWED = -5,   // trusting self is not allowed
-    CHANGE_TRUST_TRUST_LINE_MISSING = -6, // Asset trustline is missing for pool
-    CHANGE_TRUST_CANNOT_DELETE =
-        -7, // Asset trustline is still referenced in a pool
-    CHANGE_TRUST_NOT_AUTH_MAINTAIN_LIABILITIES =
-        -8 // Asset trustline is deauthorized
+    CHANGE_TRUST_SELF_NOT_ALLOWED = -5,  // trusting self is not allowed
+    CHANGE_TRUST_INVALID_DISTRIBUTOR_ACCOUNT = -6,  // only defined distributor (in root account) can create a new asset
+    CHANGE_TRUST_TRUST_LINE_MISSING = -7, // Asset trustline is missing for pool
+    CHANGE_TRUST_CANNOT_DELETE = -8, // Asset trustline is still referenced in a pool
+    CHANGE_TRUST_NOT_AUTH_MAINTAIN_LIABILITIES = -9 // Asset trustline is deauthorized
 };
 
 union ChangeTrustResult switch (ChangeTrustResultCode code)
@@ -1391,6 +1390,7 @@ case CHANGE_TRUST_NO_ISSUER:
 case CHANGE_TRUST_INVALID_LIMIT:
 case CHANGE_TRUST_LOW_RESERVE:
 case CHANGE_TRUST_SELF_NOT_ALLOWED:
+case CHANGE_TRUST_INVALID_DISTRIBUTOR_ACCOUNT:
 case CHANGE_TRUST_TRUST_LINE_MISSING:
 case CHANGE_TRUST_CANNOT_DELETE:
 case CHANGE_TRUST_NOT_AUTH_MAINTAIN_LIABILITIES:
